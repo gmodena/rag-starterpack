@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Chat Interface</title>
+    <style>
+        :root {
+            --bg-primary: #121212;
+            --bg-chat: #1e1e1e;
+            --bg-input: #2c2c2c;
+            --color-user-message: #2a4f2a;
+            --color-bot-message: #4f2a2a;
+            --color-text: #e0e0e0;
+            --color-button: #4a90e2;
+            --color-button-hover: #6ab0ff;
+            --border-color: #444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--color-text);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .chat-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            background: var(--bg-chat);
+            border: 1px solid var(--border-color);
+        }
+
+        .message {
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .message.user {
+            background: var(--color-user-message);
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        .message.bot {
+            background: var(--color-bot-message);
+            align-self: flex-start;
+            margin-right: auto;
+        }
+
+        .input-container {
+            display: flex;
+            padding: 10px;
+            background: var(--bg-input);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .query-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            outline: none;
+            background: var(--bg-input);
+            color: var(--color-text);
+        }
+
+        .send-button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background: var(--color-button);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .send-button:hover {
+            background: var(--color-button-hover);
+        }
+    </style>
+</head>
+<body>
+    <div id="chatContainer" class="chat-container"></div>
+    
+    <div class="input-container">
+        <input 
+            type="text" 
+            id="queryInput" 
+            class="query-input" 
+            placeholder="Type your message here..." 
+            aria-label="Chat input"
+        />
+        <button 
+            id="sendButton" 
+            class="send-button" 
+            aria-label="Send message"
+        >
+            Send
+        </button>
+    </div>
+
+    <script type="module" src="./index.ts"></script> 
+</body>
+</html>
